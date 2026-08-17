@@ -1,0 +1,8 @@
+# Build contract (spec §2.1). No build starts without it (G0).
+tier:        # T0 | T1 | T2
+build_mode:  # one-shot | staged
+criteria:
+  - id: AC-1
+    text:    # observable, checkable statement
+    verify:  # golden-test | citation-lint | fact-audit | smoke | security-scan | rubric | manual
+# manual cap: <=40% for engine's first two projects, <=20% after. Breach = P3.

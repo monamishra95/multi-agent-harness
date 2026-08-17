@@ -1,0 +1,14 @@
+{
+  "_spec": "§2.4 — Verifier → orchestrator, Librarian. Binary verdict; every line evidenced; no execution evidence = P2 against Verifier.",
+  "envelope": {},
+  "verdict": "GREEN | RED",
+  "criteria": [ { "id": "AC-1", "status": "pass | fail | blocked", "evidence": "" } ],
+  "fact_audit": {
+    "sample_policy": "bootstrap-100pct | risk-based | T2-100pct",
+    "checked": 0,
+    "results": [ { "fact_id": "", "status": "confirmed | corrected | unverified", "detail": "", "defect": null } ]
+  },
+  "citation_coverage": 1.0,
+  "functional": { "golden": "n/n", "smoke": "pass | fail", "screenshots_reviewed": 0, "console_errors": 0 },
+  "defects_filed": []
+}

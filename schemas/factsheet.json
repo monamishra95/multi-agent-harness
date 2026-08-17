@@ -1,0 +1,22 @@
+{
+  "_spec": "§2.2 — Scout → Builder, Verifier. Commercial figures: tier 0. Technical claims: tier <=1. Tier 2 never sole source.",
+  "envelope": {},
+  "facts": [
+    {
+      "id": "F-000",
+      "claim": "",
+      "value": "",
+      "as_of": "",
+      "retrieved_at": "",
+      "source_url": "",
+      "source_tier": 0,
+      "confidence": "confirmed | corroborated | unverified | directional",
+      "arxiv_version": null,
+      "peer_reviewed": null,
+      "citation_status": null,
+      "notes": ""
+    }
+  ],
+  "unknowns": [],
+  "source_ledger_deltas": []
+}

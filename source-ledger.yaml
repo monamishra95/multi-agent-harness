@@ -1,0 +1,23 @@
+# Scout's persistent domain reliability ledger.
+#
+# Read before every research run; updated only via factsheet `source_ledger_deltas`
+# routed through Librarian. Every entry needs a reason and a provenance reference —
+# distrust must be earned and traceable, never accumulated as folklore.
+#
+# Ships empty. Populate it from your own incidents.
+
+distrusted: []
+  # - domain: example-aggregator.com
+  #   reason: "Carried a stale vendor price for six weeks after the official page changed"
+  #   provenance: "DEF-2026-01-15-004"
+
+watch: []
+  # Domains with one strike. A second strike promotes them to `distrusted`.
+
+rehabilitated: []
+  # Requires evidence the error class was fixed. Librarian-gated.
+
+# A class rule worth adopting early, before you have incidents of your own:
+# SEO aggregator and "statistics roundup" sites are tier 2 at best, and tier 2 is
+# never a figure's sole source. They routinely republish stale pricing and usage
+# numbers long after the primary source has changed.

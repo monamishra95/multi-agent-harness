@@ -1,0 +1,19 @@
+# Normalize line endings. This repo is consumed on macOS and Linux and its CI runs
+# on Ubuntu, so anything executable must keep LF regardless of the authoring OS.
+# Without this, a Windows checkout ships CRLF shell scripts that fail on other
+# platforms with "bad interpreter: /bin/sh^M".
+
+* text=auto
+
+# Executables and anything a shell or CI runner interprets: LF, always.
+*.sh        text eol=lf
+*.py        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+hooks/pre-commit text eol=lf
+
+# Documentation and data: normalized in the repo, native in the working copy.
+*.md        text
+*.json      text
+LICENSE     text
+NOTICE      text

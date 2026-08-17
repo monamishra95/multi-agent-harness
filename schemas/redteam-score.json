@@ -1,0 +1,15 @@
+{
+  "_spec": "§2.5 — Red-team → orchestrator, Librarian. Scores void without quoted evidence. Exactly three weaknesses, always.",
+  "envelope": {},
+  "rubric_version": "",
+  "scores": [ { "line": "", "score": 0, "evidence": "quoted from artifact" } ],
+  "mean": 0,
+  "floor": 0,
+  "top_weaknesses": [
+    { "rank": 1, "text": "", "suggested_class": "" },
+    { "rank": 2, "text": "", "suggested_class": "" },
+    { "rank": 3, "text": "", "suggested_class": "" }
+  ],
+  "rubric_gaps": [],
+  "defects_filed": []
+}

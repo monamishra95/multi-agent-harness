@@ -1,0 +1,38 @@
+tier: T1
+build_mode: one-shot
+
+criteria:
+  - id: AC-1
+    text: Every rendered figure carries a visible citation tag linking to the vendor's own page
+    verify: citation-lint
+
+  - id: AC-2
+    text: Every figure in claims.json maps to a factsheet fact with source_tier 0
+    verify: fact-audit
+
+  - id: AC-3
+    text: Vendors with no officially published enterprise price display "not published" rather than any number
+    verify: golden-test
+
+  - id: AC-4
+    text: Each figure displays its verification date, and any figure older than 30 days renders with a staleness flag
+    verify: golden-test
+
+  - id: AC-5
+    text: Page loads and renders all five vendor rows with zero console errors
+    verify: smoke
+
+  - id: AC-6
+    text: No secrets, keys, or internal URLs in the repo or git history
+    verify: security-scan
+
+  - id: AC-7
+    text: Pricing structures are categorized correctly (per-seat / usage / hybrid / credit) per each vendor's own description
+    verify: rubric
+
+# manual criteria: 0 of 7 — within the 20% cap.
+#
+# Note what makes these checkable: each states an observable condition rather than
+# a quality ("comprehensive", "clear", "professional"). If a criterion can only be
+# verified by someone forming an opinion, it usually needs to be broken into the
+# specific observable things that opinion is made of.

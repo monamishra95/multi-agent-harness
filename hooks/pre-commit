@@ -1,0 +1,32 @@
+#!/bin/sh
+# G3 pre-commit hook — secret scan + repo hygiene. Unwaivable (PROTOCOL.md §3.3).
+# Installed by install-hooks.sh.
+#
+# Locates the harness in this order:
+#   1. $HARNESS_DIR (set it explicitly for non-standard layouts)
+#   2. <repo>/multi-agent-harness   (harness vendored inside the project)
+#   3. <repo>/../multi-agent-harness (harness cloned beside the project)
+
+REPO="$(git rev-parse --show-toplevel)" || exit 1
+
+for candidate in \
+  "$HARNESS_DIR" \
+  "$REPO/multi-agent-harness" \
+  "$REPO/../multi-agent-harness"
+do
+  if [ -n "$candidate" ] && [ -d "$candidate/checks" ]; then
+    HARNESS="$candidate"
+    break
+  fi
+done
+
+if [ -z "$HARNESS" ]; then
+  echo "G3 hook: could not locate the harness."
+  echo "  Set HARNESS_DIR to the multi-agent-harness checkout, or place it"
+  echo "  inside or beside this repository."
+  echo "  Refusing to allow an unscanned commit."
+  exit 1
+fi
+
+python3 "$HARNESS/checks/run_gates.py" "$REPO" --pre-commit
+exit $?

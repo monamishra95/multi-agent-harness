@@ -1,0 +1,10 @@
+# Attached to every cross-agent artifact (spec §2)
+envelope:
+  project_id:
+  agent:            # scout | builder | verifier | red-team | librarian | mechanic
+  agent_version:    # hash of agent.md + memory/ at run time
+  adapter_version:  # e.g. fable-1.0
+  model:            # e.g. claude-fable-5
+  build_mode:       # one-shot | staged
+  schema_version: "0.2"
+  produced_at:      # ISO 8601

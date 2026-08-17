@@ -1,0 +1,8 @@
+{
+  "_spec": "§2.3 — Builder → Verifier. 100% coverage of rendered figures. Derivations show arithmetic. Non-confirmed facts labeled in UI.",
+  "envelope": {},
+  "claims": [
+    { "id": "CL-01", "location": "file#selector", "fact_id": "F-000" },
+    { "id": "CL-02", "location": "file#selector", "derived": "arithmetic shown here", "inputs": ["F-001", "F-002"] }
+  ]
+}

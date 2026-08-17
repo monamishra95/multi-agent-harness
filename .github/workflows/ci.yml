@@ -1,0 +1,44 @@
+name: gates
+
+# The harness gates itself: the same checks it ships run against this repository
+# on every push. If a check changes, it is applied to the change that made it.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # G3 scans git history, not just the working tree
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: G3 — secret scan (unwaivable)
+        run: python checks/g3_secret_scan.py . --history
+
+      - name: Repo hygiene
+        run: python checks/lint_hygiene.py .
+
+      - name: G5 — placeholder lint
+        run: python checks/lint_placeholder.py .
+
+      - name: Citation screen (advisory)
+        run: python checks/lint_citation.py .
+        continue-on-error: true
+
+      - name: Full release gate
+        run: python checks/run_gates.py . --release
+
+      - name: Checks are executable and self-describing
+        run: |
+          for f in checks/*.py; do
+            python -c "import ast,sys; m=ast.parse(open('$f').read()); assert ast.get_docstring(m), '$f has no module docstring'"
+          done
