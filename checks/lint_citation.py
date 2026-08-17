@@ -26,6 +26,18 @@ SOURCE = re.compile(
 # operator to ignore it, which is worse than having no check.
 POLICY = re.compile(r"(?i)coverage|\bcaps?\b|threshold|\bquorum\b|sampling")
 
+# CSS declarations and HTML attributes carry numbers that are layout, not claims.
+# "width: 100%" and 'data-tflops="312"' need no citation, and flagging them buries
+# the real findings under noise. Found by running this check against real repos.
+CODE_CONTEXT = re.compile(
+    r"(?i)\b(width|height|opacity|scale|top|left|right|bottom|margin|padding|flex|"
+    r"font-size|line-height|border|background|gradient|translate|rotate|stroke|"
+    r"fill|grid|gap|inset|z-index)\s*[:=]"          # CSS declarations
+    r"|data-[\w-]+\s*=\s*[\"']"                      # HTML data attributes
+    r"|@keyframes|\d+%\s*[,{]"                       # keyframe stops
+    r"|^\s*[.#@]?[\w-]+\s*\{"                        # CSS selector lines
+)
+
 SHIP_EXT = {".md", ".html", ".txt"}
 SKIP = {".git", "node_modules", "__pycache__", ".venv", "venv"}
 
@@ -46,7 +58,7 @@ def main():
         for i, line in enumerate(lines):
             if FIGURE.search(line):
                 window = "\n".join(lines[max(0, i - 1):i + 2])
-                if SOURCE.search(window) or POLICY.search(line):
+                if SOURCE.search(window) or POLICY.search(line) or CODE_CONTEXT.search(line):
                     continue
                 findings.append(f"{p}:{i+1}: {line.strip()[:90]}")
     if findings:

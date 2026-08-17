@@ -1,0 +1,25 @@
+id: DEF-2026-08-17-003
+project: multi-agent-harness
+class: C1            # check produces unusable signal-to-noise on real input
+severity: SEV3
+stage_detected: S1
+stage_should_have: S0-builder
+owner_agent: builder
+model: claude-fable-5
+description: >
+  First run of the citation lint against real project repos returned 33
+  flags on one repo, of which roughly a third were CSS declarations and
+  HTML attributes — "width: 100%", 'data-tflops="312"', keyframe stops.
+  Layout numbers are not claims. The real findings (uncited hardware specs
+  in documentation tables) were buried under the noise.
+evidence: "run against roofline-model-llm-inference and labs-enablement-radar-deploy, 2026-08-17"
+root_cause: >
+  The check was only ever exercised against markdown prose. HTML and CSS
+  were in scope but never in the test corpus, so a whole class of
+  false positive went unseen.
+lesson_file: builder/memory/lints-need-real-corpora-not-just-fixtures.md
+regression_artifact: "CODE_CONTEXT exemption in lint_citation.py; noise fell 33 -> 22 and 10 -> 4 on the two repos"
+promotion: memory
+recurrence_of: null
+model_specific: false
+status: closed
