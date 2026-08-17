@@ -34,6 +34,9 @@ jobs:
         run: python checks/lint_citation.py .
         continue-on-error: true
 
+      - name: Seeded-defect test — do the gates actually catch planted defects?
+        run: python tests/seeded_defects.py
+
       - name: Full release gate
         run: python checks/run_gates.py . --release
 

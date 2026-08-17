@@ -1,0 +1,23 @@
+id: DEF-2026-08-17-002
+project: multi-agent-harness
+class: P1            # contract/design violation in test tooling
+severity: SEV3
+stage_detected: S1
+stage_should_have: S0-builder
+owner_agent: builder
+model: claude-fable-5
+description: >
+  The seeded-defect test's fixtures embedded fake credentials as literal
+  strings in its own source file. The repository's G3 scan correctly
+  flagged them, turning the release gate RED. The test's docstring claimed
+  no fake credentials were committed while the file itself contradicted it.
+evidence: "run_gates.py --release RED on first run after adding tests/seeded_defects.py"
+root_cause: >
+  Fixtures were generated at runtime, but the generator held the payloads
+  as literals. "Generated at runtime" was reasoned about at the wrong layer.
+lesson_file: builder/memory/secret-fixtures-must-be-composed.md
+regression_artifact: "G3 scan over the repo in CI already covers this; recurrence fails the build"
+promotion: memory
+recurrence_of: null
+model_specific: false
+status: closed

@@ -1,0 +1,25 @@
+id: DEF-2026-08-17-001
+project: multi-agent-harness
+class: C1            # logic error in a gate check
+severity: SEV2
+stage_detected: S1
+stage_should_have: S0-builder
+owner_agent: builder
+model: claude-fable-5
+description: >
+  The citation lint's FIGURE regex required a word boundary after the unit
+  group, so "47%" never matched: "%" followed by a space is non-word to
+  non-word, which is not a boundary. Every percentage in every scanned
+  document passed silently. The check reported "clean" on corpora that
+  contained uncited percentages, which is worse than reporting nothing.
+evidence: "tests/seeded_defects.py case F3-uncited-figure — MISSED on first run"
+root_cause: >
+  Regex was written by inspection and validated only against inputs that
+  happened to use word-character units (ms, TFLOPS). No adversarial input
+  was ever run against it, so a silent-failure mode survived review.
+lesson_file: builder/memory/silent-failure-checks-need-planted-inputs.md
+regression_artifact: "tests/seeded_defects.py case F3-uncited-figure (now in CI)"
+promotion: memory
+recurrence_of: null
+model_specific: false
+status: closed

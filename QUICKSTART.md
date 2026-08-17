@@ -43,7 +43,7 @@ criteria:
 
 Allowed methods: `golden-test`, `citation-lint`, `fact-audit`, `smoke`, `security-scan`, `rubric`, `manual`.
 
-Keep `manual` under 20% of criteria (40% for your first two projects while you're learning to write machine-checkable criteria). If a criterion can't be checked mechanically, it's usually under-specified rather than genuinely subjective.
+The manual cap is 20% of criteria (40% for your first two projects, while you're learning to write machine-checkable criteria). If a criterion can't be checked mechanically, it's usually under-specified rather than genuinely subjective.
 
 ## 3. Run the loop (1 min to start)
 

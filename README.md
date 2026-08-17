@@ -67,6 +67,8 @@ python checks/run_gates.py <path> --pre-commit   # G3: secrets + hygiene (hard f
 python checks/run_gates.py <path> --release      # + placeholder (hard) + citation screen (advisory)
 ```
 
+**Do the gates actually catch anything?** [`tests/seeded_defects.py`](tests/seeded_defects.py) plants known defects — a leaked API key, committed build artifacts, placeholder text, an uncited figure — and measures detection, plus controls that must *not* fire. It runs in CI. On its first run it caught a real bug in one of the shipped checks: the citation lint had been silently missing every percentage in every document it scanned ([DEF-2026-08-17-001](defects/DEF-2026-08-17-001.yaml)). That's the argument for measuring the claim rather than asserting it.
+
 ---
 
 ## For agent knowledge governance
