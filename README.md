@@ -1,5 +1,8 @@
 # multi-agent-harness
 
+[![gates](https://github.com/monamishra95/multi-agent-harness/actions/workflows/ci.yml/badge.svg)](https://github.com/monamishra95/multi-agent-harness/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 A six-agent build harness that makes AI-assisted work verifiable, gated, and self-correcting. Agents are durable entities with editable brains, earned memories, and regression benchmarks — not prompts you retype each project.
 
 It exists to make three guarantees:
@@ -13,7 +16,7 @@ The target is not zero defects — it's zero *escaped* defects: every error chea
 ## Quickstart
 
 ```bash
-git clone https://github.com/<you>/multi-agent-harness
+git clone https://github.com/monamishra95/multi-agent-harness
 cp -r multi-agent-harness/harness/claude-config  your-project/.claude
 sh multi-agent-harness/hooks/install-hooks.sh    your-project
 ```

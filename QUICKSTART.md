@@ -5,7 +5,7 @@ Five minutes to your first gated build.
 ## 1. Install into a project (2 min)
 
 ```bash
-git clone https://github.com/<you>/multi-agent-harness
+git clone https://github.com/monamishra95/multi-agent-harness
 cp -r multi-agent-harness/harness/claude-config  your-project/.claude
 sh multi-agent-harness/hooks/install-hooks.sh    your-project
 ```
